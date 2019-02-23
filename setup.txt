@@ -1,0 +1,33 @@
+sudo apt-get update \
+&& sudo apt-get install -y software-properties-common curl \
+&& sudo add-apt-repository ppa:deadsnakes/ppa \
+&& sudo apt-get update \
+&& sudo apt-get install -y python3.6 python3.6-venv
+
+sudo apt-get install python-virtualenv
+
+virtualenv --python=python3.6 myvenv
+
+source myvenv/bin/activate
+
+cd Weatherbot_Tutorial-master
+
+cd latest
+
+sudo apt-get install python3.6-dev
+
+git clone https://github.com/RasaHQ/rasa_nlu.git
+cd rasa_nlu/
+pip install ConfigArgParse~=0.13.0 flask h5py Flask requests
+pip install -r requirements.txt
+
+pip install numpy
+pip install rasa_nlu[spacy]==0.12.3
+pip install rasa_core==0.9.0a7
+
+
+# pip install rasa_nlu[spacy]
+# pip install rasa_core 
+
+python -m spacy download en_core_web_md
+python -m spacy link en_core_web_md en --force;
