@@ -6,9 +6,9 @@ sudo apt-get update \
 
 sudo apt-get install python-virtualenv
 
-virtualenv --python=python3.6 myvenv
+virtualenv --python=python3.6 myvenv2
 
-source myvenv/bin/activate
+source myvenv2/bin/activate
 
 cd Weatherbot_Tutorial-master
 
@@ -20,14 +20,31 @@ git clone https://github.com/RasaHQ/rasa_nlu.git
 cd rasa_nlu/
 pip install ConfigArgParse~=0.13.0 flask h5py Flask requests
 pip install -r requirements.txt
-
+pip uninstall numpy
 pip install numpy
 pip install rasa_nlu[spacy]==0.12.3
 pip install rasa_core==0.9.0a7
 
 
-# pip install rasa_nlu[spacy]
-# pip install rasa_core 
-
 python -m spacy download en_core_web_md
 python -m spacy link en_core_web_md en --force;
+
+python nlu_model.py
+
+Create the dialogue model. Comment out the run_customer_bot() method inside the __main__. Then run below command.
+python dialogue_management_model.py
+
+Now uncomment the run_customer_bot() method at __main__ and comment out the train_dialogue() method. Then run below again.
+python dialogue_management_model.py
+
+================================================
+# setup slack bot
+https://towardsdatascience.com/building-a-conversational-chatbot-for-slack-using-rasa-and-python-part-1-bca5cc75d32f
+
+# Install ngrok and follow instructions:
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+
+https://dashboard.ngrok.com/get-started
+
+
+==================================================
